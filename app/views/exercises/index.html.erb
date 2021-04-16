@@ -1,3 +1,34 @@
-<div class="col-md-8 col-xs-12">
+<% if @exercises.empty? %>
+  <h5>No workouts yet</h5>
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-light">
+        <th scope="col">Duration(min)</th>
+        <th scope="col">Workout Details</th>
+        <th scope="col">Activity Date</th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <% @exercises.each do |exercise| %>
+          <tr>
+            <td><%= exercise.duration_in_min %></td>
+            <td><%= exercise.workout %></td>
+            <td><%= exercise.workout_date %></td>
+            <td>
+              <%= link_to " Show", [current_user, exercise],
+                          class: "btn btn-sm btn-info bi bi-eye"%>
+              <%= link_to " Edit", [:edit,current_user, exercise],
+                          class: "btn btn-sm btn-primary bi bi-pencil"%>
+              <%= link_to " Destroy", [current_user, exercise], method: :delete, class: "btn btn-sm btn-danger bi bi-trash"%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<div class="col-md-8 col-xs-12 mb-3">
   <%= link_to "New Workout", new_user_exercise_path(user_id: current_user), class:"btn btn-success" %>
 </div>

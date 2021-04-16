@@ -2,6 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:update, :edit, :show, :destroy]
 
   def index
+    @exercises = current_user.exercises
   end
 
   def new
@@ -20,6 +21,16 @@ class ExercisesController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @exercise.destroy
+      flash[:notice] = "Exercise has been deleted"
+      redirect_to root_path
+    else
+      flash[:alert] = "Exercise has not been deleted"
+      redirect_to [current_user, @exercise]
+    end
   end
 
   private
