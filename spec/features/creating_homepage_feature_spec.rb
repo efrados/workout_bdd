@@ -1,8 +1,8 @@
 require "rails_helper" 
 
-RSpec.feature "Listing Articles" do
+RSpec.feature "Visiting Home page" do
 
-  scenario "with articles created and user not singed in" do
+  scenario "with user not singed in" do
     visit "/"
 
     expect(page).to have_link('Home')

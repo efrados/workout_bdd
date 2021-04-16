@@ -19,6 +19,9 @@
       <ul class="d-flex navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
+            <li class="nav-item">
+              <%= link_to 'My Lounge', user_exercises_path(current_user), class:"nav-link" %>
+            </li>
             <%= link_to destroy_user_session_path,
                        method: :delete, class: "nav-link" do %>
             <span class="text-white">
