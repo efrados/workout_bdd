@@ -1,0 +1,40 @@
+<div class="col-lg-7 col-md-9 col-sm-8">
+  <%= form_for [current_user, @exercise] do |f| %>
+    <% if @exercise.errors.any? %>
+      <div class="card border-danger">
+        <div class="card-header">
+          <strong>
+            <%= pluralize(@exercise.errors.count, "error") %>
+            prohibited this exercise from being saved:
+          </strong>  
+        </div>
+        <div class="card-body text-danger">
+          <ul>
+            <% @exercise.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="mb-3">
+      <%= f.label :duration_in_min, class: "form-label" %>
+      <%= f.number_field :duration_in_min, class: "form-control", placeholder: "Number of mins of Exercise", autofocus: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :workout, 'Workout Details' %>
+      <%= f.text_area :workout, class: "form-control", placeholder: "Title of exercise", autofocus: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :workout_date, 'Activity Date'%>
+      <%= f.date_field :workout_date, class: "form-control", placeholder: "Date of exercise", autofocus: true %>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
