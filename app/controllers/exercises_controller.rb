@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:update, :edit, :show, :destroy]
 
   def index
-    @exercises = current_user.exercises
+    @exercises = current_user.exercises.last_seven_days
   end
 
   def new
