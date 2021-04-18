@@ -21,7 +21,9 @@
               <%= link_to " Edit", [:edit,current_user, exercise],
                           class: "btn btn-sm btn-primary bi bi-pencil",
                           id:"edit_#{current_user.id}_#{exercise.id}" %>
-              <%= link_to " Destroy", [current_user, exercise], method: :delete, class: "btn btn-sm btn-danger bi bi-trash" %>
+              <%= link_to " Destroy", [current_user, exercise], method: :delete,
+                          class: "btn btn-sm btn-danger bi bi-trash",
+                          id:"destroy_#{current_user.id}_#{exercise.id}" %>
             </td>
           </tr>
         <% end %>
