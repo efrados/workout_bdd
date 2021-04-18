@@ -17,10 +17,11 @@
             <td><%= exercise.workout_date %></td>
             <td>
               <%= link_to " Show", [current_user, exercise],
-                          class: "btn btn-sm btn-info bi bi-eye"%>
+                          class: "btn btn-sm btn-info bi bi-eye" %>
               <%= link_to " Edit", [:edit,current_user, exercise],
-                          class: "btn btn-sm btn-primary bi bi-pencil"%>
-              <%= link_to " Destroy", [current_user, exercise], method: :delete, class: "btn btn-sm btn-danger bi bi-trash"%>
+                          class: "btn btn-sm btn-primary bi bi-pencil",
+                          id:"edit_#{current_user.id}_#{exercise.id}" %>
+              <%= link_to " Destroy", [current_user, exercise], method: :delete, class: "btn btn-sm btn-danger bi bi-trash" %>
             </td>
           </tr>
         <% end %>
