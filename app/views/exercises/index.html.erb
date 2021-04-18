@@ -31,4 +31,5 @@
 
 <div class="col-md-8 col-xs-12 mb-3">
   <%= link_to "New Workout", new_user_exercise_path(user_id: current_user), class:"btn btn-success" %>
+  <%= content_tag :div, "", id: "chart", data: { workouts: @exercises } %>
 </div>
