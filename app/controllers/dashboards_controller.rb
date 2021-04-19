@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
+  include Pagy::Backend
 
   def index
-    @athletes = User.all
+    @pagy, @athletes = pagy(User.all, items: 9)
   end
 end
