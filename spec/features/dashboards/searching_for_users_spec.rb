@@ -10,14 +10,15 @@ RSpec.feature "Listing Users" do
                         last_name: "Doe",
                         email: "sara@example.com",
                         password: "password")
-    login_as(@john)
   end
   scenario "shows a list of registered of users" do
     visit "/"
 
-    expect(page).to have_content("Listing of Members")
+    fill_in "search_name", with: "Doe"
+    click_button "Search"
+
     expect(page).to have_content(@john.full_name)
     expect(page).to have_content(@sara.full_name)
-
+    expect(current_path).to eq("/dashboards/search")
   end
 end
